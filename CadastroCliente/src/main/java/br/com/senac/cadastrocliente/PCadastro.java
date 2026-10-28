@@ -92,6 +92,7 @@ public class PCadastro extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         labelObser = new javax.swing.JLabel();
         campoObser = new javax.swing.JTextField();
+        btSalvar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -501,18 +502,29 @@ public class PCadastro extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(painelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(painelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(painelDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(painelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(303, 303, 303)
+                        .addComponent(btSalvar)))
                 .addContainerGap(214, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -526,7 +538,9 @@ public class PCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         pastas.addTab("Dados Pessoais", jPanel1);
@@ -546,6 +560,59 @@ public class PCadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        // TODO add your handling c  jTabbedPane1.addTab("Dados Pessoais", jPanel1);
+
+        String codigo = campocode.getText();
+        String nomeCompleto = campoNome.getText();
+        String contato = campoContato.getText();
+        boolean ativo = ctAtivo.isSelected();
+
+        String cpf = labelcpf.getText();
+        String dataNascimento = campoNascimen.getText();
+        String identidade = campoIdent.getText();
+        String cnpj = campocnpj.getText();
+        String inscricaoEstadual = campoInscricao.getText();
+
+        String end = campoEndereco.getText();
+        String numero = campoNum.getText();
+        String complemento = campoComple.getText();
+        String cep = campoCep.getText();
+        String bairro = campoBairo.getText();
+        String cidade = jComboBox1.getSelectedItem().toString();
+
+        String sexo;
+
+        if (RbFeminino.isSelected()) {
+            sexo = "Feminino";
+        } else if (RbMasculino.isSelected()) {
+            sexo = "Masculino";
+        } else {
+            sexo = "Prefiro não informar";
+        }
+
+        String telefone = campoFone.getText();
+        String fox = campoFox.getText();
+        String celular = campoCelular.getText();
+        String email = campoemail.getText();
+
+        String preferencia = jComboBox2.getSelectedItem().toString();
+        String observacoes = campoObser.getText();
+
+        String usuario = campoUsuario.getText();
+        String senha = new String(campoSenha.getText());
+        String confirmarSenha =
+        new String(campoConfir.getText());
+
+        CadastroCliente pessoa = new CadastroCliente(
+            codigo, nomeCompleto, contato, ativo,
+            cpf, dataNascimento, identidade, cnpj, inscricaoEstadual,
+            end, numero, complemento, cep, bairro, cidade,
+            sexo, telefone, fox, celular, email, preferencia, observacoes,
+            usuario, senha, confirmarSenha
+        );
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -585,6 +652,7 @@ public class PCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton RbFeminino;
     private javax.swing.JRadioButton RbMasculino;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JTextField campoBairo;
     private javax.swing.JTextField campoCelular;
     private javax.swing.JTextField campoCep;
